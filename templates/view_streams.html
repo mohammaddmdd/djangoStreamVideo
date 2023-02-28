@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Live Stream</title>
+  <script src="https://unpkg.com/@mux/mux-player"></script>
+</head>
+<body>
+  <form id="playback-form" method="POST">
+    {% csrf_token %}
+    <label for="playback-id">Enter Playback ID:</label>
+    <input type="text" id="playback-id" name="playback_id">
+    <button type="submit">Start Stream</button>
+  </form>
+
+  <mux-player id="player"
+    stream-type="live"
+    metadata-video-title="My Live Stream"
+    metadata-viewer-user-id="{{ request.user.id }}"
+    primary-color="#FFFFFF"
+    secondary-color="#000000">
+  </mux-player>
+
+  <script>
+    // Get the form and player elements
+    var form = document.getElementById("playback-form");
+    var player = document.getElementById("player");
+
+    // On form submit, prevent the default action and load the player with the selected playback ID
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      var playbackId = document.getElementById("playback-id").value;
+      player.setAttribute("playback-id", playbackId);
+      player.load();
+    });
+  </script>
+</body>
+</html>

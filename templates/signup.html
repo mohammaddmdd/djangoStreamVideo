@@ -1,0 +1,20 @@
+<form method="POST" style="max-width: 400px; margin: 0 auto;">
+  {% csrf_token %}
+  <div style="display: flex; flex-direction: column; margin-bottom: 1rem;">
+    <label for="{{ form.username.id_for_label }}" style="font-size: 1.2rem; margin-bottom: 0.5rem;">Username:</label>
+    {{ form.username }}
+  </div>
+  <div style="display: flex; flex-direction: column; margin-bottom: 1rem;">
+    <label for="{{ form.email.id_for_label }}" style="font-size: 1.2rem; margin-bottom: 0.5rem;">Email:</label>
+    {{ form.email }}
+  </div>
+  <div style="display: flex; flex-direction: column; margin-bottom: 1rem;">
+    <label for="{{ form.password1.id_for_label }}" style="font-size: 1.2rem; margin-bottom: 0.5rem;">Password:</label>
+    {{ form.password1 }}
+  </div>
+  <div style="display: flex; flex-direction: column; margin-bottom: 1rem;">
+    <label for="{{ form.password2.id_for_label }}" style="font-size: 1.2rem; margin-bottom: 0.5rem;">Confirm Password:</label>
+    {{ form.password2 }}
+  </div>
+  <input type="submit" value="Sign Up" style="font-size: 1.2rem; padding: 0.5rem 1rem; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
+</form>

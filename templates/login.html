@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <style>
+        body {
+            background-color: #f8f8f8;
+            font-family: sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 48px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            display: block;
+            margin: 0 auto 10px;
+            padding: 12px 24px;
+            width: 100%;
+            max-width: 400px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        input[type="submit"] {
+            display: block;
+            margin: 0 auto;
+            padding: 12px 24px;
+            background-color: #2196f3;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #1976d2;
+        }
+
+        .create-account-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .create-account-button:hover {
+            background-color: #388e3c;
+        }
+
+        .error-message {
+            text-align: center;
+            margin-top: 10px;
+            color: #ff0000;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<h1>Login</h1>
+{% if error %}
+    <div class="error-message">{{ error }}</div>
+{% endif %}
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Login">
+    <a href="{% url 'signup' %}" class="create-account-button">Create a new account</a>
+</form>
+</body>
+</html>
